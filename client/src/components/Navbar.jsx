@@ -9,10 +9,10 @@ const Navbar = () => {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className="bg-gray-900 text-white px-6 py-4 shadow-md fixed top-0 left-0 w-full z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <nav className="bg-transparent text-white px-6 py-4  fixed top-0 left-0 w-full z-50">
+      <div className="max-w-5xl mx-auto flex justify-between items-center">
         {/* <img src="/sampleImages/logo.png" alt="Struxzora Logo" className="h-auto w-20" /> */}
-        <h1 className="text-xl font-bold">Struxzora Constructions</h1>
+        <h1 className="text-xl font-bold">Struxzora Construct</h1>
 
 
 
@@ -22,13 +22,13 @@ const Navbar = () => {
             <a href="#about" className="hover:text-yellow-400">About</a>
           </li>
           <li>
-            <a href="#products" className="hover:text-yellow-400">Products</a>
+            <a href="#products" className="hover:text-yellow-400">Services</a>
           </li>
           <li>
-            <a href="#whyus" className="hover:text-yellow-400">Why Us</a>
+            <a href="#whyus" className="hover:text-yellow-400">Projects</a>
           </li>
           <li>
-            <a href="#contact" className="hover:text-yellow-400">Contact</a>
+            <a href="#contact" className="hover:text-yellow-400">Contacts</a>
           </li>
         </ul>
 
@@ -45,10 +45,10 @@ const Navbar = () => {
             <a href="#about" onClick={closeMenu} className="hover:text-yellow-400">About</a>
           </li>
           <li>
-            <a href="#products" onClick={closeMenu} className="hover:text-yellow-400">Products</a>
+            <a href="#products" onClick={closeMenu} className="hover:text-yellow-400">Services</a>
           </li>
           <li>
-            <a href="#whyus" onClick={closeMenu} className="hover:text-yellow-400">Why Us</a>
+            <a href="#whyus" onClick={closeMenu} className="hover:text-yellow-400">Projects</a>
           </li>
           <li>
             <a href="#contact" onClick={closeMenu} className="hover:text-yellow-400">Contact</a>
