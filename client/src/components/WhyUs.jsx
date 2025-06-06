@@ -110,6 +110,14 @@ const WhyUs = () => {
             <h3 className="font-bold text-lg mb-2">Client-Centric Approach</h3>
             <p className="text-sm text-gray-300">We listen, adapt, and build around your vision — offering personalized project planning.</p>
           </motion.div>
+          {/* Box 6*/}
+          <motion.div variants={itemVariants} className="border border-gray-600 p-6 rounded-md hover:border-green-400 transition-colors duration-300">
+            <div className="text-yellow-400 text-3xl mb-4">
+              <i className="fas fa-handshake"></i>
+            </div>
+            <h3 className="font-bold text-lg mb-2">After-Sales Support & Maintenance</h3>
+            <p className="text-sm text-gray-300">Our job doesn’t end after construction. We offer continued support and service, especially for tech-based installations. </p>
+        </motion.div>
         </motion.div>
       </div>
     </section>

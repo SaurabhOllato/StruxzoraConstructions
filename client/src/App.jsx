@@ -36,6 +36,19 @@ function App() {
           <Products />
           <WhyUs />
           <Gallery />
+          <motion.div
+            className="lg:mt-16 w-full rounded-lg text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <img
+              src="https://res.cloudinary.com/dxscy1ixg/image/upload/v1749207180/gate_pbpczm.jpg"
+              alt="Banner"
+              className="w-full h-auto"
+            />
+          </motion.div>
           <Contact />
           <Footer />
         </motion.div>

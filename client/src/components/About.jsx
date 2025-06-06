@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
 
-// Sample images - replace with your actual images
-import Image1 from "/sampleImages/gallery1.jpg";
+
+import Image1 from "/sampleImages/product4.jpg";
 import Image2 from "/sampleImages/gallery2.jpg";
 import Image3 from "/sampleImages/gallery3.jpg";
-import Image4 from "/sampleImages/gallery4.jpg";
+import Image4 from "/sampleImages/gallery5.jpg";
 
 const About = () => {
   const container = {
@@ -72,25 +72,27 @@ const About = () => {
               key={index}
               className={`
         absolute rounded-lg shadow-xl overflow-hidden border-2 border-white
-        ${index === 0
-                  ? "w-3/5 left-0 top-0 z-40 md:w-2/5"
-                  : index === 1
-                    ? "w-3/5 right-0 top-20 z-30 md:w-2/5"
-                    : index === 2
-                      ? "w-3/5 left-0 top-40 z-20 md:w-2/5"
-                      : "w-3/5 right-0 top-60 z-10 md:w-2/5"
-                }
+        ${
+          index === 0
+            ? "w-3/5 left-0 top-0 z-40 md:w-2/5"
+            : index === 1
+            ? "w-3/5 right-0 top-20 z-30 md:w-2/5"
+            : index === 2
+            ? "w-3/5 left-0 top-40 z-20 md:w-2/5"
+            : "w-3/5 right-0 top-64 z-10 md:w-2/5"
+        }
         
         /* Responsive adjustments */
         sm:!w-1/2 
-        ${index === 0
-                  ? "sm:left-4 sm:top-4"
-                  : index === 1
-                    ? "sm:right-4 sm:top-20"
-                    : index === 2
-                      ? "sm:left-4 sm:top-36"
-                      : "sm:right-4 sm:top-60"
-                }
+        ${
+          index === 0
+            ? "sm:left-4 sm:top-4"
+            : index === 1
+            ? "sm:right-4 sm:top-20"
+            : index === 2
+            ? "sm:left-4 sm:top-36"
+            : "sm:right-4 sm:top-60"
+        }
       `}
               variants={imageItem}
               whileHover={{ scale: 1.03, zIndex: 50 }}
@@ -127,17 +129,18 @@ const About = () => {
 
           {/* Main Content */}
           <motion.div variants={item} className="mb-6">
-            <p className="max-w-2xl mx-auto lg:mx-0 text-lg font-medium text-gray-700 mb-4 text-justify">
-              {/* We're problem-solvers with focus. Project managers with purpose. */}
-              Team players with one goal in mind: To deliver your project on
-              time, on budget, and on vision.
-            </p>
+            
             <p className="max-w-3xl mx-auto lg:mx-0 text-gray-600 text-justify">
               We specialize in comprehensive construction solutions including
               building construction, metal works, plumbing, electrical
               installations, and advanced security systems. Our expertise covers
               CCTV cameras, gate barriers, PBX networking, and more — providing
               you with reliable and integrated services for your projects.
+            </p>
+            <p className="max-w-2xl mx-auto lg:mx-0 text-lg font-medium text-gray-700 mb-4 text-justify">
+              {/* We're problem-solvers with focus. Project managers with purpose. */}
+              Team players with one goal in mind: To deliver your project on
+              time, on budget, and on vision.
             </p>
           </motion.div>
 

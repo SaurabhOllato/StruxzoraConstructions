@@ -12,12 +12,15 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.14.3",
+    "@cloudinary/url-gen": "^1.21.0",
     "framer-motion": "^12.16.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icon": "^1.0.0",
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
+    "react-router-dom": "^7.6.2",
     "react-scroll": "^1.9.3"
   },
   "devDependencies": {

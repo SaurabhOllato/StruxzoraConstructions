@@ -3,19 +3,19 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const heroContent = [
   {
-    image: "/StruxzoraConstructions/sampleImages/hero.jpg",
+    image: "https://res.cloudinary.com/dxscy1ixg/image/upload/v1749205806/hero4_epkmk8.jpg",
     title: "Premium Steel & Metals",
     subtitle: "Strong Foundations Start Here",
     cta: "Explore Products"
   },
   {
-    image: "/StruxzoraConstructions/sampleImages/hero2.jpg",
+    image: "https://res.cloudinary.com/dxscy1ixg/image/upload/v1749205806/hero2_rlzsik.jpg",
     title: "Innovative Construction Solutions",
     subtitle: "Building Tomorrow's Landmarks Today",
     cta: "View Projects"
   },
   {
-    image: "/StruxzoraConstructions/sampleImages/hero3.jpg",
+    image: "https://res.cloudinary.com/dxscy1ixg/image/upload/v1749205805/hero3_tovv7o.jpg",
     title: "Expert Engineering Services",
     subtitle: "Precision in Every Structure",
     cta: "Our Services"

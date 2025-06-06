@@ -50,7 +50,7 @@ const Navbar = () => {
         {/* Main logo text */}
         <h1 className="text-xl md:text-xl font-bold tracking-tighter leading-none">
           <span className={`transition-colors duration-300 ${scrolled ? 'text-gray-900' : 'text-white'}`}>
-            STRUXZORA
+            STRUXORA
           </span>
         </h1>
         
