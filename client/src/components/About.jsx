@@ -2,10 +2,7 @@ import { motion } from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 
-import Image1 from "/sampleImages/product4.jpg";
-import Image2 from "/sampleImages/gallery2.jpg";
-import Image3 from "/sampleImages/gallery3.jpg";
-import Image4 from "/sampleImages/gallery5.jpg";
+
 import { useEffect, useState } from "react";
 
 const About = () => {
@@ -85,7 +82,12 @@ const About = () => {
     );
   };
 
-  const images = [Image1, Image2, Image3, Image4]; // Your image imports
+const images = [
+  "https://res.cloudinary.com/dxscy1ixg/image/upload/v1749205811/product4_ahp9ib.jpg",
+  "https://res.cloudinary.com/dxscy1ixg/image/upload/v1749205823/metal_xtbwa6.jpg",
+  "https://res.cloudinary.com/dxscy1ixg/image/upload/v1749205795/gallery5_neqxe4.jpg",
+  "https://res.cloudinary.com/dxscy1ixg/image/upload/v1749205802/gallery3_ma5pfb.jpg",
+];
 
   return (
     <section id="about" className="lg:pb-0 py-20 px-6 bg-white">
