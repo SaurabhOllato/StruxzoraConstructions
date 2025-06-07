@@ -126,7 +126,7 @@ const Contact = () => {
             variants={itemVariants}
             className="text-sm uppercase tracking-widest text-yellow-500 mb-2"
           >
-            Interested in our work?!
+           Ready to build something amazing?
           </motion.p>
           <motion.h3
             variants={itemVariants}
@@ -261,19 +261,19 @@ const Contact = () => {
           variants={containerVariants}
           className="flex flex-col justify-center"
         >
-          <motion.h4
+          <motion.h6
             variants={itemVariants}
             className="text-2xl font-bold text-gray-800 mb-8"
           >
-            Ready to start your project?
-          </motion.h4>
+           Contact us today for a quote.  
+          </motion.h6>
 
           <motion.div
             variants={itemVariants}
             className="grid gap-8 grid-cols-1 sm:grid-cols-2"
           >
             {/* Address */}
-            <motion.div
+            {/* <motion.div
               className="flex items-start p-5"
               whileHover={{ y: -5 }}
             >
@@ -288,7 +288,7 @@ const Contact = () => {
                   Jadynchester, 90210
                 </p>
               </div>
-            </motion.div>
+            </motion.div> */}
 
             {/* Email */}
             <motion.div
@@ -379,7 +379,7 @@ const Contact = () => {
               >
                 <FaTwitter className="text-xl" />
               </motion.a>
-              <motion.a
+              {/* <motion.a
                 href="#"
                 className="text-white bg-green-500 rounded-full p-3 shadow-lg flex items-center justify-center"
                 whileHover={{ y: -5, scale: 1.1 }}
@@ -387,7 +387,7 @@ const Contact = () => {
                 transition={{ type: "spring", stiffness: 400 }}
               >
                 <FaWhatsapp className="text-xl" />
-              </motion.a>
+              </motion.a> */}
             </div>
           </motion.div>
         </motion.div>

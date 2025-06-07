@@ -8,6 +8,7 @@ import {
   FaNetworkWired,
   FaDoorOpen,
 } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const services = [
   {
@@ -42,26 +43,46 @@ const Products = () => {
     triggerOnce: true,
   });
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.4,
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+        when: "beforeChildren",
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.95
+    },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
         type: "spring",
-        damping: 20,
-        stiffness: 120,
+        damping: 15,
+        stiffness: 100,
+        mass: 0.5,
       },
     },
   };
@@ -72,13 +93,26 @@ const Products = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
+        ease: [0.2, 0.65, 0.3, 0.9],
       },
     },
   };
 
+  // For mobile, we'll animate all cards at once to prevent performance issues
+  const mobileItemVariants = isMobile ? {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  } : itemVariants;
+
   return (
-    <section className="relative py-16 px-6 max-w-5xl mx-auto" id="services">
+    <section className="relative py-16 px-4 sm:px-6 max-w-6xl mx-auto" id="services">
       {/* Section Header */}
       <motion.div
         ref={ref}
@@ -112,38 +146,67 @@ const Products = () => {
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         variants={containerVariants}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4  "
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
       >
         {services.map((service, index) => (
           <motion.div
             key={index}
-            variants={itemVariants}
-            className="relative h-[300px] rounded-xl overflow-hidden group shadow-xl bg-black"
+            variants={isMobile ? mobileItemVariants : itemVariants}
+            custom={index}
+            className="relative h-[300px] rounded-xl overflow-hidden group shadow-lg hover:shadow-xl bg-black transition-shadow duration-300"
+            whileHover={!isMobile ? { 
+              y: -10,
+              transition: { type: "spring", stiffness: 300 }
+            } : {}}
           >
-            {/* Background Image */}
+            {/* Background Image with optimized loading */}
             <div className="absolute inset-0 z-0">
               <img
                 src={service.bgImage}
                 alt={service.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
+                decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent transition-opacity duration-300 group-hover:from-black/70"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
             </div>
 
             {/* Content */}
             <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
               <motion.div
                 className="text-white mb-4"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400 }}
+                initial={{ scale: 0.8 }}
+                animate={inView ? { scale: 1 } : {}}
+                transition={{ 
+                  delay: isMobile ? 0 : 0.3 + index * 0.1,
+                  type: "spring",
+                  stiffness: 500
+                }}
               >
                 {service.icon}
               </motion.div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-white/90 text-sm group-hover:text-white transition duration-300">
+              <motion.h3 
+                className="text-xl font-semibold mb-2"
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ 
+                  delay: isMobile ? 0 : 0.4 + index * 0.1,
+                  duration: 0.6
+                }}
+              >
+                {service.title}
+              </motion.h3>
+              <motion.p 
+                className="text-white/90 text-sm group-hover:text-white transition duration-300"
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ 
+                  delay: isMobile ? 0 : 0.5 + index * 0.1,
+                  duration: 0.6
+                }}
+              >
                 {service.desc}
-              </p>
+              </motion.p>
             </div>
           </motion.div>
         ))}

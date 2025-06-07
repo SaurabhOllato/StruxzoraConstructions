@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
-
+import { useInView } from "react-intersection-observer";
 
 import Image1 from "/sampleImages/product4.jpg";
 import Image2 from "/sampleImages/gallery2.jpg";
 import Image3 from "/sampleImages/gallery3.jpg";
 import Image4 from "/sampleImages/gallery5.jpg";
+import { useEffect, useState } from "react";
 
 const About = () => {
   const container = {
@@ -48,11 +49,41 @@ const About = () => {
   };
 
   const stats = [
-    { value: "765+", label: "COMPLETED PROJECTS" },
-    { value: "999+", label: "HAPPY CLIENTS" },
-    { value: "21+", label: "YEARS OF EXPERIENCE" },
-    { value: "380+", label: "PROFESSIONAL TEAM" },
+    { value: 765, label: "COMPLETED PROJECTS", suffix: "+" },
+    { value: 999, label: "HAPPY CLIENTS", suffix: "+" },
+    { value: 21, label: "YEARS OF EXPERIENCE", suffix: "+" },
+    { value: 380, label: "PROFESSIONAL TEAM", suffix: "+" },
   ];
+
+  const Counter = ({ target, suffix = "", duration = 2 }) => {
+    const [count, setCount] = useState(0);
+    const [ref, inView] = useInView({
+      triggerOnce: true,
+      threshold: 0.5,
+    });
+
+    useEffect(() => {
+      if (!inView) return;
+
+      let start = 0;
+      const end = target;
+      const incrementTime = (duration * 1000) / end;
+
+      const timer = setInterval(() => {
+        start += 1;
+        setCount(start);
+        if (start >= end) clearInterval(timer);
+      }, incrementTime);
+
+      return () => clearInterval(timer);
+    }, [inView, target, duration]);
+    return (
+      <span ref={ref} className="text-blue-600">
+        {count}
+        {suffix}
+      </span>
+    );
+  };
 
   const images = [Image1, Image2, Image3, Image4]; // Your image imports
 
@@ -129,7 +160,6 @@ const About = () => {
 
           {/* Main Content */}
           <motion.div variants={item} className="mb-6">
-            
             <p className="max-w-3xl mx-auto lg:mx-0 text-gray-600 text-justify">
               We specialize in comprehensive construction solutions including
               building construction, metal works, plumbing, electrical
@@ -145,30 +175,42 @@ const About = () => {
           </motion.div>
 
           {/* CTA */}
-          <motion.div variants={item} className="mb-6 hidden lg:flex">
+          {/* <motion.div variants={item} className="mb-6 hidden lg:flex">
             <button className="flex items-center mx-auto lg:mx-0 text-blue-600 font-semibold hover:text-blue-800 transition-colors">
               MORE ABOUT US <FaArrowDown className="ml-2" />
             </button>
-          </motion.div>
+          </motion.div> */}
 
           {/* Stats */}
           <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
             variants={container}
-            className="grid grid-cols-2 hidden lg:flex md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-8"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto"
           >
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
                 variants={item}
-                className="p-4"
-                whileHover={{ scale: 1.05 }}
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                whileHover={{
+                  scale: 1.03,
+                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                }}
               >
-                <h4 className="text-sm lg:text-4xl font-bold text-blue-600 mb-2">
-                  {stat.value}
-                </h4>
-                <p className="text-sm uppercase tracking-wider text-gray-500">
-                  {stat.label}
-                </p>
+                <div className="flex flex-col items-center text-center">
+                  <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
+                    <Counter
+                      target={stat.value}
+                      suffix={stat.suffix}
+                      duration={1.5 + index * 0.2}
+                    />
+                  </h4>
+                  <p className="text-xs sm:text-sm uppercase tracking-wider text-gray-500 font-medium">
+                    {stat.label}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
