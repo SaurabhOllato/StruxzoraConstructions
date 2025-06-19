@@ -273,7 +273,7 @@ const Contact = () => {
             className="grid gap-8 grid-cols-1 sm:grid-cols-2"
           >
             {/* Address */}
-            {/* <motion.div
+            <motion.div
               className="flex items-start p-5"
               whileHover={{ y: -5 }}
             >
@@ -282,13 +282,13 @@ const Contact = () => {
               </div>
               <div>
                 <p className="font-bold text-gray-700 mb-2">Our Location</p>
-                <p className="text-gray-600">
-                  2047 Cyrus Viaduct East
+                <p className="text-gray-600 text-sm">
+                  Manjunatha circle, Bel Layout II Phase, BEL Layout, Phase 2, Byadarahalli
                   <br />
-                  Jadynchester, 90210
+                 Bengaluru, Karnataka 560091
                 </p>
               </div>
-            </motion.div> */}
+            </motion.div>
 
             {/* Email */}
             <motion.div
